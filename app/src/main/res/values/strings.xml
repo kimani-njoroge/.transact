@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Transact</string>
+    <string name="Status">transaction_status</string>
+    <string name="transaction_status">Status</string>
+    <string name="tran_amount">Amount</string>
+    <string name="tran_info">Info</string>
+    <string name="tran_category">Category</string>
 </resources>
