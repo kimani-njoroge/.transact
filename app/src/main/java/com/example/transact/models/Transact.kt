@@ -1,6 +1,7 @@
 package com.example.transact.models
 
 class Transact {
+    //create transaction model
     var id: Int = 0
     var category: String = ""
     var status: String = ""
