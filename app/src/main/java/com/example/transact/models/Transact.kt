@@ -7,4 +7,5 @@ class Transact {
     var status: String = ""
     var amount: String = ""
     var info: String = ""
+    var completed: String = "N"
 }

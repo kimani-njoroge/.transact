@@ -11,13 +11,13 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
     DatabaseHandler.DB_NAME,null, DatabaseHandler.DB_VERSION) {
     //create database and corresponding fields
     override fun onCreate(db: SQLiteDatabase?) {
-        val CREATE_TABLE = "CREATE TABLE $TABLE_NAME ($ID INTEGER PRIMARY KEY,$CATEGORY TEXT,$STATUS TEXT,$AMOUNT TEXT,$INFO TEXT);"
-        db.execSQL(CREATE_TABLE)
+        val CREATE_TABLE = "CREATE TABLE $TABLE_NAME ($ID INTEGER PRIMARY KEY,$CATEGORY TEXT,$STATUS TEXT,$AMOUNT TEXT,$INFO TEXT, $COMPLETED TEXT);"
+        db?.execSQL(CREATE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         val DROP_TABLE = "DROP TABLE IF EXISTS $TABLE_NAME"
-        db.execSQL(DROP_TABLE)
+        db?.execSQL(DROP_TABLE)
         onCreate(db)
     }
 
@@ -29,6 +29,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
         values.put(STATUS, transactions.status)
         values.put(AMOUNT, transactions.amount)
         values.put(INFO, transactions.info)
+        values.put(COMPLETED, transactions.completed)
         val _success = db.insert(TABLE_NAME, null, values)
         db.close()
         Log.v("InsertedId", "$_success")
@@ -48,12 +49,13 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
         transactions.status = cursor.getString(cursor.getColumnIndex(STATUS))
         transactions.amount = cursor.getString(cursor.getColumnIndex(AMOUNT))
         transactions.info = cursor.getString(cursor.getColumnIndex(INFO))
+        transactions.completed = cursor.getString(cursor.getColumnIndex(COMPLETED))
         cursor.close()
         return transactions
     }
 
     //list all transactions
-    fun transacts() : List<Transact> {
+    fun transaction() : List<Transact> {
         val transactionList = ArrayList<Transact>()
         val db = writableDatabase
         val selectQuery = "SELECT * FROM $TABLE_NAME"
@@ -67,6 +69,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
                     transactions.status = cursor.getString(cursor.getColumnIndex(STATUS))
                     transactions.amount = cursor.getString(cursor.getColumnIndex(AMOUNT))
                     transactions.info = cursor.getString(cursor.getColumnIndex(INFO))
+                    transactions.completed = cursor.getString(cursor.getColumnIndex(COMPLETED))
                 } while (cursor.moveToNext())
             }
         }
@@ -82,6 +85,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
         values.put(STATUS, transactions.status)
         values.put(AMOUNT, transactions.amount)
         values.put(INFO, transactions.info)
+        values.put(COMPLETED, transactions.completed)
         val _success = db.update(TABLE_NAME, values, ID + "=?", arrayOf(transactions.id.toString())).toLong()
         db.close()
         return Integer.parseInt("$_success") != -1
@@ -112,7 +116,6 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
         private val STATUS = "status"
         private val AMOUNT = "amount"
         private val INFO = "info"
-
-
+        private val COMPLETED = "Completed"
     }
 }
