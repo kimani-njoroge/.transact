@@ -35,6 +35,23 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
         return (Integer.parseInt("$_success") != -1)
     }
 
+    //get transaction
+    fun getTransaction(_id: Int) : Transact{
+        val transactions = Transact()
+        val db = writableDatabase
+        val selectQuery = "SELECT * FROM $TABLE_NAME WHERE $ID = $_id"
+        val cursor = db.rawQuery(selectQuery, null)
+
+        cursor?.moveToFirst()
+        transactions.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(ID)))
+        transactions.category = cursor.getString(cursor.getColumnIndex(CATEGORY))
+        transactions.status = cursor.getString(cursor.getColumnIndex(STATUS))
+        transactions.amount = cursor.getString(cursor.getColumnIndex(AMOUNT))
+        transactions.info = cursor.getString(cursor.getColumnIndex(INFO))
+        cursor.close()
+        return transactions
+    }
+
     companion object {
         private val DB_VERSION = 1
         private val DB_NAME = "MyTransactions"
