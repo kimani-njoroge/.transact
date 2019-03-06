@@ -74,6 +74,19 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
         return transactionList
     }
 
+    //update transaction
+    fun updateTransaction(transactions: Transact) : Boolean {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(CATEGORY, transactions.category)
+        values.put(STATUS, transactions.status)
+        values.put(AMOUNT, transactions.amount)
+        values.put(INFO, transactions.info)
+        val _success = db.update(TABLE_NAME, values, ID + "=?", arrayOf(transactions.id.toString())).toLong()
+        db.close()
+        return Integer.parseInt("$_success") != -1
+    }
+
     companion object {
         private val DB_VERSION = 1
         private val DB_NAME = "MyTransactions"
