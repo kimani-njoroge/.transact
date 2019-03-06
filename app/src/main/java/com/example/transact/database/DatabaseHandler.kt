@@ -96,6 +96,12 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
     }
 
     //delete single transaction
+    fun deleteTransaction(_id: Int) : Boolean {
+        val db = this.writableDatabase
+        val _success = db.delete(TABLE_NAME,null,null).toLong()
+        db.close()
+        return Integer.parseInt("_success") != -1
+    }
 
     companion object {
         private val DB_VERSION = 1
