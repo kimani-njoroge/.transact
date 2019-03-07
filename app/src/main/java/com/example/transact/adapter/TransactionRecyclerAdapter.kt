@@ -24,12 +24,16 @@ class TransactionRecyclerAdapter(transactionList: List<Transact>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : TransactionViewHolder {
+        //create viewholder and initiallize fields(category,amount,info and status)
         val view = LayoutInflater.from(context).inflate(R.layout.list_item_transactions, parent, false)
+        //inflate to instantiate xml layout to view
         return TransactionViewHolder(view)
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)//specify from which API level to target
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
+        //update the viewholder contents abd set them up to be used by used by the
+        //recyclerview
         val transactions = transactionList[position]
         holder.category.text = transactions.category
         holder.status.text = transactions.status
@@ -37,19 +41,22 @@ class TransactionRecyclerAdapter(transactionList: List<Transact>,
         holder.info.text = transactions.info
 
         if (transactions.completed == "Y")
+            //check whether the result is Y
             holder.list_item.background = ContextCompat.getDrawable(context, R.color.colorSuccess)
         else
             holder.list_item.background = ContextCompat.getDrawable(context, R.color.colorUnSuccess)
         holder.itemView.setOnClickListener {
-            val i = Intent(context, AddorEditActivity::class.java)
-            i.putExtra("Mode", "E")
+            //set action to commence the activity
+            val i = Intent(context, AddorEditActivity::class.java)// launch activity
+            i.putExtra("Mode", "E")//add extended data to the intent
             i.putExtra("Id",transactions.id)
-            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK //avoid restarting a task that already exists
             context.startActivity(i)
         }
     }
 
     override fun getItemCount(): Int {
+        //return total no of items in the data set
         return transactionList.size
     }
 

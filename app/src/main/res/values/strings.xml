@@ -5,4 +5,12 @@
     <string name="tran_amount">Amount</string>
     <string name="tran_info">Info</string>
     <string name="tran_category">Category</string>
+    <string name="input_category">Category</string>
+    <string name="input_status">Status</string>
+    <string name="input_amount">Amount</string>
+    <string name="input_info">Add Note</string>
+    <string name="completed">Completed</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="action_delete">Delete</string>
 </resources>

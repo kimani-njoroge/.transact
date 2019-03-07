@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="10dp">
+
+    <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:fontFamily="sans-serif-smallcaps"-->
+            <!--tools:targetApi="jelly_bean">-->
+
+    <EditText
+            android:id="@+id/input_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_category"
+            android:fontFamily="sans-serif-smallcaps"
+            android:inputType="text"
+            tools:ignore="TextFields"
+            tools:targetApi="jelly_bean" android:textColor="@color/colorSuccess"/>
+    <!--</android.support.design.widget.TextInputLayout>-->
+
+    <EditText
+            android:id="@+id/input_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_status"
+            android:fontFamily="sans-serif-smallcaps"
+            android:inputType="text"
+            tools:targetApi="jelly_bean"
+            tools:ignore="TextFields"/>
+
+    <EditText
+            android:id="@+id/input_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_amount"
+            android:fontFamily="sans-serif-smallcaps"
+            android:inputType="text"
+            tools:targetApi="jelly_bean"
+            tools:ignore="TextFields"/>
+
+    <EditText
+            android:id="@+id/input_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_info"
+            android:fontFamily="sans-serif-smallcaps"
+            android:inputType="text"
+            tools:targetApi="jelly_bean"
+            tools:ignore="TextFields"/>
+
+    <android.support.v7.widget.SwitchCompat
+            android:id="@+id/swt_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/completed"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:fontFamily="sans-serif-smallcaps"
+            tools:targetApi="jelly_bean"/>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/save"
+            android:fontFamily="sans-serif-smallcaps"
+            tools:targetApi="jelly_bean"/>
+
+    <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_delete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/delete"
+            android:fontFamily="sans-serif-smallcaps"
+            tools:targetApi="jelly_bean"
+            android:visibility="gone"/>
+
+</LinearLayout>
