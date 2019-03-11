@@ -15,8 +15,8 @@ class AddorEditActivity  : AppCompatActivity() {
     var isEditMode = false
 
     //call activity is first created
-    public override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    public override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.actvitiy_add_edit)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         initDB()

@@ -11,7 +11,7 @@
             android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
                   android:windowSoftInputMode="adjustResize|stateHidden"
-                  android:theme="@style/AppCompatTheme" android:screenOrientation="portrait">
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,8 +20,7 @@
         </activity>
         <activity
                 android:name=".AddorEditActivity"
-                android:label="Add"
-                android:theme="@style/AppCompatTheme"></activity>
+                android:label="Add"/>
     </application>
 
 </manifest>
