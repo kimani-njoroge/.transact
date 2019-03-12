@@ -70,6 +70,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context,
                     transactions.amount = cursor.getString(cursor.getColumnIndex(AMOUNT))
                     transactions.info = cursor.getString(cursor.getColumnIndex(INFO))
                     transactions.completed = cursor.getString(cursor.getColumnIndex(COMPLETED))
+                    transactionList.add(transactions)
                 } while (cursor.moveToNext())
             }
         }
